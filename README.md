@@ -2,6 +2,8 @@
 
 This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
+Next, we would be adding a database management system using **sqlalchemy** as our DBMS. We would also add some testcases to test our databases as well.
+
 ---
 
 <center><h3>Repository Contents by Project Task</h3> </center>
