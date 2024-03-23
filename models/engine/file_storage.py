@@ -13,8 +13,9 @@ class FileStorage:
         # created an empty list to store the object
         obj_list = []
         # loop through the class and append it to the list
-        for classes in cls.items():
-            obj_list.append(cls[classes])
+        for obj in FileStorage.__objects:
+            if cls is None or isinstance(obj, type(cls)):
+                obj_list.append(obj)
         return obj_list
 
     def new(self, obj):
