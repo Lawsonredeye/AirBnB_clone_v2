@@ -10,9 +10,7 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        # created an empty list to store the object
         obj_list = []
-        # loop through the class and append it to the list
         for obj in FileStorage.__objects:
             if cls is None or isinstance(obj, type(cls)):
                 obj_list.append(obj)
