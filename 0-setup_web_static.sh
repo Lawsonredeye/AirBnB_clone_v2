@@ -20,8 +20,8 @@ content="\
 "
 
 # - Create Directories
-mkdir -p /data/web_static/; cd /data/web_static; mkdir releases shared current;
-cd releases; mkdir test; echo "$content" > index.html
+sudo mkdir -p /data/web_static/ || cd /data/web_static || sudo mkdir releases shared current;
+cd releases || mkdir test || echo "$content" > /data/web_static/releases/test/index.html
 
 # - create a symbolic link from test to current
 
