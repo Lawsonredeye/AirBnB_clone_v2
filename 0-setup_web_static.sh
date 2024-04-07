@@ -19,6 +19,9 @@ then
 	sudo apt install nginx -y
 fi 
 
+# set nginx to port 80
+sudo sed -i 's/8080/80/g' etc/nginx/sites-enabled/default
+
 sudo mkdir -p /data/
 sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/releases/
