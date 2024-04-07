@@ -29,7 +29,7 @@ sudo mkdir -p /data/web_static/releases/test/
 sudo echo "$content" > /data/web_static/releases/test/index.html
 
 # Create a symbolic link /data/web_static/current linked to the /data/web_static/releases/test/ folder.
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership of the /data/ folder to the ubuntu user AND group
 sudo chown -R ubuntu:ubuntu /data
