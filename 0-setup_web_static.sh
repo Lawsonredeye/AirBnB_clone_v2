@@ -2,13 +2,6 @@
 # - script that sets up your web servers for the deployment of web_static
 # - check if Nginx is installed else install if not exists
 
-check=$(which nginx)
-if [ -z "$check" ]
-then
-  sudo apt update -y
-	sudo apt install nginx -y
-fi 
-
 content="\
 <html>
   <head>
@@ -19,21 +12,29 @@ content="\
 </html>
 "
 
-# - Create Directories
-sudo mkdir -p /data/web_static/ || cd /data/web_static || sudo mkdir releases shared current;
-cd releases || mkdir test || echo "$content" > /data/web_static/releases/test/index.html
+check=$(which nginx)
+if [ -z "$check" ]
+then
+  sudo apt update -y
+	sudo apt install nginx -y
+fi 
 
-# - create a symbolic link from test to current
+sudo mkdir -p /data/
+sudo mkdir -p /data/web_static/
+sudo mkdir -p /data/web_static/releases/
+sudo mkdir -p /data/web_static/shared/
+sudo mkdir -p /data/web_static/releases/test/
 
-sudo ln -sf /data/web_static/releases/test /data/web_static/current
+# Create a fake HTML file /data/web_static/releases/test/index.html
+sudo echo "$content" > /data/web_static/releases/test/index.html
 
-sudo chown -R ubuntu:ubuntu /data/
+# Create a symbolic link /data/web_static/current linked to the /data/web_static/releases/test/ folder.
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-# sudo sed -i 's/root /var/www/html;/ alias /data/web_static/current/;/g' /etc/nginx/sites-enabled/default
-# sudo sed -i '/listen 80 default_server/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-enabled/default
+# Give ownership of the /data/ folder to the ubuntu user AND group
+sudo chown -R ubuntu:ubuntu /data
 
 sudo sed -i 's#root /var/www/html;#root /var/www/html;\n        location /hbnb_static/ {\n            alias /data/web_static/current/;\n        }#' /etc/nginx/sites-enabled/default
 
 # - Restart Server
 sudo service nginx restart
-
