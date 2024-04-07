@@ -10,7 +10,7 @@ then
 fi 
 
 # set nginx to port 80
-sudo sed -i 's/8080/80/g' etc/nginx/sites-enabled/default
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 
 sudo mkdir -p /data/
 sudo mkdir -p /data/web_static/
