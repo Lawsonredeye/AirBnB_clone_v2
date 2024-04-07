@@ -26,7 +26,7 @@ sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 
 # Create a fake HTML file /data/web_static/releases/test/index.html
-sudo echo "$content" > /data/web_static/releases/test/index.html
+echo "$content" > sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link /data/web_static/current linked to the /data/web_static/releases/test/ folder.
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
