@@ -2,16 +2,6 @@
 # - script that sets up your web servers for the deployment of web_static
 # - check if Nginx is installed else install if not exists
 
-content="\
-<html>
-  <head>
-  </head>
-  <body>
-    Holberton School
-  </body>
-</html>
-"
-
 check=$(which nginx)
 if [ -z "$check" ]
 then
@@ -29,7 +19,13 @@ sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
 
 # Create a fake HTML file /data/web_static/releases/test/index.html
-echo "$content" > sudo tee /data/web_static/releases/test/index.html
+echo "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>" | sudo tee /data/web_static/releases/test/index.html
 
 # Create a symbolic link /data/web_static/current linked to the /data/web_static/releases/test/ folder.
 sudo ln -s -f /data/web_static/releases/test/ /data/web_static/current
