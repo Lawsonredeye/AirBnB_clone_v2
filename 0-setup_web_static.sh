@@ -35,5 +35,5 @@ sudo chown -R ubuntu:ubuntu /data
 
 sudo sed -i 's#root /var/www/html;#root /var/www/html;\n        location /hbnb_static/ {\n            alias /data/web_static/current/;\n        }#' /etc/nginx/sites-enabled/default
 
-# - Restart Server
+# - Restart nginx Server
 sudo service nginx restart
