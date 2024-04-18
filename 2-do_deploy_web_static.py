@@ -2,8 +2,8 @@
 """
 Python script that uses fabrics to create an archive of backup
 """
-from fabric.api import local, run, env
-from datetime import datetime
+from fabric.api import local, run, put, env
+from os.path import exists
 
 # - using the do_pack guide
 # - create the do_deploy()
@@ -27,11 +27,10 @@ def do_deploy(archive_path):
     """
     Fab command used to deploy an archive into a remote server
     """
-    archive = local('ls -al archive_path')
-    if archive.failed:
+    if not exists(archive_path):
         return False
     archive = archive_path[:-4]
-    new_path = "/data/web_static/releases/archive"
+    new_path = f"/data/web_static/releases/{archive}"
     try:
         put(archive_path, '/tmp/')
         run(f'mkdir -p /data/web_static/releases/{archive}')
@@ -39,6 +38,6 @@ def do_deploy(archive_path):
         run(f'rm -rf /tmp/{archive_path}')
         run(f'rm -rf /data/web_static/current')
         run(f'mkdir -p /data/web_static/current')
-        run(f'ln -s -f /data/web_static/current {new_path}')
+        run(f'ln -s /data/web_static/current {new_path}')
     except Exception as e:
         return False
