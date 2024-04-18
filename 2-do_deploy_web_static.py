@@ -32,6 +32,7 @@ def do_deploy(archive_path):
     archive = archive_path[:-4]
     new_path = f"/data/web_static/releases/{archive}"
     try:
+        run('mkdir -p /tmp/versions')
         put(archive_path, '/tmp/')
         run(f'mkdir -p /data/web_static/releases/{archive}')
         run(f'tar -xvf /tmp/{archive_path} -C {new_path}')
