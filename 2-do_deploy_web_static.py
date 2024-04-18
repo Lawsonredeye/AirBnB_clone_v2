@@ -29,10 +29,11 @@ def do_deploy(archive_path):
     """
     if not exists(archive_path):
         return False
-    archive = archive_path[:-4]
+    archive = archive_path[9:-4]
     new_path = f"/data/web_static/releases/{archive}"
     try:
-        put(archive_path, '/tmp/')
+        run('mkdir -p /tmp/versions')
+        put(archive_path, '/tmp/versions')
         run(f'mkdir -p /data/web_static/releases/{archive}')
         run(f'tar -xvf /tmp/{archive_path} -C {new_path}')
         run(f'rm -rf /tmp/{archive_path}')
