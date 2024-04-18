@@ -10,7 +10,11 @@ from datetime import datetime
 # - create the versions directory using
 # - create the .tgz backup using tar
 
+
 def do_pack():
+    """
+    Fab function that creates an archive
+    """
     Time = datetime.now()
     Time = Time.strftime("%Y%m%d%H%M%S")
     local('mkdir -p versions')
