@@ -14,7 +14,7 @@ def index():
     """
     default landing page that has the content hello
     """
-    return "Hello HBNB"
+    return "Hello HBNB!"
 
 
 if __name__ == "__main__":
