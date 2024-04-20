@@ -6,7 +6,6 @@ this is just for learning how to use flask
 
 from flask import Flask
 
-
 app = Flask(__name__)
 
 
