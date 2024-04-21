@@ -29,7 +29,7 @@ def c(text):
 
 
 @app.route("/python/<text>")
-def python(text="is cool"):
+def python(text="is cool", strict_slashes=False):
     """ Prints what ever text would be"""
     return text.replace("_", " ")
 
