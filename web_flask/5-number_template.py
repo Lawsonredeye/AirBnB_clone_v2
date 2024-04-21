@@ -4,7 +4,7 @@ this just starts a flask web application
 and returns HBNB with Hello HBNB!
 """
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -34,6 +34,19 @@ def python(text="is cool"):
     """ Prints what ever text would be"""
     text = text.replace("_", " ")
     return f"Python {text}"
+
+@app.route("/number/<int:n>", strict_slashes=False)
+def num(n):
+    """displays only numbers"""
+    if n >= 0:
+        return f"{n} is a number"
+
+
+app.route("/number_template/<int:n>", strict_slashes=False)
+def number(n):
+    """returns an html page"""
+    if n >= 0:
+        return render_template("5-number.html", n=n)
 
 
 if __name__ == "__main__":
