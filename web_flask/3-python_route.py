@@ -4,7 +4,7 @@ this just starts a flask web application
 and returns HBNB with Hello HBNB!
 """
 
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -30,10 +30,8 @@ def c(text):
 
 @app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python(text=None):
+def python(text="is cool"):
     """ Prints what ever text would be"""
-    if text is None:
-        text = "is cool"
     text = text.replace("_", " ")
     return f"python {text}"
 
