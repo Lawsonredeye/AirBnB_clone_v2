@@ -33,7 +33,7 @@ def c(text):
 def python(text="is cool"):
     """ Prints what ever text would be"""
     text = text.replace("_", " ")
-    return f"python {text}"
+    return f"Python {text}"
 
 
 if __name__ == "__main__":
