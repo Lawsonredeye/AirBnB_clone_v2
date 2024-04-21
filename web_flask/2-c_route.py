@@ -24,7 +24,7 @@ def hbnb():
 @app.route("/c/<text>", strict_slashes=False)
 def c(text):
     """Just print anything along sides c"""
-    if text = "_":
+    if text == "_":
         text = " "
     return f"C {text}"
 
