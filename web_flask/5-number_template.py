@@ -35,6 +35,7 @@ def python(text="is cool"):
     text = text.replace("_", " ")
     return f"Python {text}"
 
+
 @app.route("/number/<int:n>", strict_slashes=False)
 def num(n):
     """displays only numbers"""
@@ -42,7 +43,7 @@ def num(n):
         return f"{n} is a number"
 
 
-app.route("/number_template/<int:n>", strict_slashes=False)
+@app.route("/number_template/<int:n>", strict_slashes=False)
 def number(n):
     """returns an html page"""
     if n >= 0:
