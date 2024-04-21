@@ -25,7 +25,7 @@ def hbnb():
 def c(text):
     """Just print anything along sides c"""
     if text == "_":
-        text = " "
+        text = ""
     return f"C {text}"
 
 
