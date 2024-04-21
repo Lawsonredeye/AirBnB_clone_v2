@@ -2,7 +2,7 @@
 # - script that sets up your web servers for the deployment of web_static
 # - check if Nginx is installed else install if not exists
 
-check=$(which nginx)
+check=$(command -v nginx)
 if [ -z "$check" ]
 then
   sudo apt update -y
