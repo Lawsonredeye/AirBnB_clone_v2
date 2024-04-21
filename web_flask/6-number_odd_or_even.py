@@ -52,6 +52,7 @@ def number(n):
 
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def odd_even(n):
+    """Prints even or odd after calculations"""
     if n % 2 == 0:
         n = f"{n} is even"
     else:
