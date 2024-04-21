@@ -54,6 +54,6 @@ def deploy():
     without taking an argument
     """
     archive_path = do_pack()
-    if archive_path.failed:
-        return False
-    do_deploy(archive_path)
+    if archive_path:
+        do_deploy(archive_path)
+    return False

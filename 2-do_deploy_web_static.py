@@ -39,6 +39,7 @@ def do_deploy(archive_path):
         run(f'rm -rf /tmp/{archive_path}')
         run(f'rm -rf /data/web_static/current')
         run(f'mkdir -p /data/web_static/current')
-        run(f'ln -s /data/web_static/current {new_path}')
+        # run(f'ln -sf /data/web_static/current {new_path}')
+        run(f'ln -sf  {new_path} /data/web_static/current')
     except Exception as e:
         return False

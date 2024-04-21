@@ -28,9 +28,12 @@ def c(text):
     return f"C {text}"
 
 
+@app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python(text="is cool"):
+def python(text=None):
     """ Prints what ever text would be"""
+    if text is None:
+        text = "is cool"
     text = text.replace("_", " ")
     return f"python {text}"
 
